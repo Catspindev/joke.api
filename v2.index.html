@@ -6,10 +6,13 @@
 </head>
 <body>
     <h1>Joke API</h1>
-    <button onclick="getJoke()">Get a Joke</button>
     <div id="jokeContainer"></div>
 
     <script>
+        $(document).ready(function() {
+            getJoke();
+        });
+
         function getJoke() {
             $.ajax({
                 url: 'https://raw.githubusercontent.com/Catspindev/joke-lists/main/jokes.txt',
@@ -21,6 +24,7 @@
                     var jokeObj = JSON.parse(randomJoke);
                     var jokeInfo = "<p>Type: " + jokeObj.type + "</p>";
                     jokeInfo += "<p>Setup: " + jokeObj.setup + "</p>";
+                    jokeInfo += "<p>Punchline: " + jokeObj.punchline + "</p>";
                     jokeInfo += "<p>ID: " + jokeObj.id + "</p>";
 
                     document.getElementById("jokeContainer").innerHTML = jokeInfo;
