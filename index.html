@@ -11,7 +11,7 @@
   
   <script>
     function getJoke() {
-      $.getJSON('https://official-joke-api.appspot.com/random_joke', function(data) {
+      $.getJSON('https://raw.githubusercontent.com/Catspindev/joke-lists/main/jokes.txt', function(data) {
         var setup = data.setup;
         var punchline = data.punchline;
         var joke = setup + "<br>" + punchline;
