@@ -48,7 +48,7 @@
     <script>
         function getJoke() {
             $.ajax({
-                url: 'https://raw.githubusercontent.com/Catspindev/joke-lists/main/jokes.txt',
+                url: 'https://joke.api.catspin.eu.org/api',
                 dataType: 'text',
                 success: function(data) {
                     var jokes = data.split("\n");
