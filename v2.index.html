@@ -22,56 +22,12 @@
                     var randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
 
                     var jokeObj = JSON.parse(randomJoke);
-                    var jokeInfo = "<p>Type: " + jokeObj.type + "</p>";
-                    jokeInfo += "<p>Setup: " + jokeObj.setup + "</p>";
-                    jokeInfo += "<p>Punchline: " + jokeObj.punchline + "</p>";
-                    jokeInfo += "<p>ID: " + jokeObj.id + "</p>";
-
-                    document.getElementById("jokeContainer").innerHTML = jokeInfo;
-                }
-            });
-        }
-    </script>
-</body>
-</html>
-In this updated code, the `jokeInfo` variable includes all the properties of the joke object, such as the `type`, `setup`, `punchline`, and `id`. This will display the complete joke information every time you enter the page.
-Main Avatar
-10/10/2023, 12:51:12 PM
-it neads to show all meta info
-Main Avatar
-10/10/2023, 12:51:23 PM
-Apologies for the confusion. Here's an updated version of the code that includes all the meta information of the joke:
-
-html
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Joke API</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-</head>
-<body>
-    <h1>Joke API</h1>
-    <div id="jokeContainer"></div>
-
-    <script>
-        $(document).ready(function() {
-            getJoke();
-        });
-
-        function getJoke() {
-            $.ajax({
-                url: 'https://raw.githubusercontent.com/Catspindev/joke-lists/main/jokes.txt',
-                dataType: 'text',
-                success: function(data) {
-                    var jokes = data.split("\n");
-                    var randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
-
-                    var jokeObj = JSON.parse(randomJoke);
-                    var jokeInfo = "<p>Type: " + jokeObj.type + "</p>";
-                    jokeInfo += "<p>Setup: " + jokeObj.setup + "</p>";
-                    jokeInfo += "<p>Punchline: " + jokeObj.punchline + "</p>";
-                    jokeInfo += "<p>ID: " + jokeObj.id + "</p>";
-                    jokeInfo += "<p>Meta: " + JSON.stringify(jokeObj.meta) + "</p>";
+                    var jokeInfo = "";
+                    for (var key in jokeObj) {
+                        if (jokeObj.hasOwnProperty(key)) {
+                            jokeInfo += "<p>" + key + ": " + jokeObj[key] + "</p>";
+                        }
+                    }
 
                     document.getElementById("jokeContainer").innerHTML = jokeInfo;
                 }
