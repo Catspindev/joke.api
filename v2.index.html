@@ -21,7 +21,10 @@
                     var jokes = data.split("\n");
                     var randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
 
-                    document.getElementById("jokeContainer").innerHTML = randomJoke;
+                    var jokeObj = JSON.parse(randomJoke);
+                    var jokeInfo = JSON.stringify(jokeObj);
+
+                    document.getElementById("jokeContainer").innerText = jokeInfo;
                 }
             });
         }
