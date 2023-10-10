@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Joke Generator</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <h1>Joke Generator</h1>
+  
+  <p id="joke"></p>
+  
+  <script>
+    function getJoke() {
+      $.getJSON('https://official-joke-api.appspot.com/random_joke', function(data) {
+        var setup = data.setup;
+        var punchline = data.punchline;
+        var joke = setup + "<br>" + punchline;
+        document.getElementById('joke').innerHTML = joke;
+      });
+    }
+    
+    // Call getJoke() on page load
+    $(document).ready(function() {
+      getJoke();
+    });
+  </script>
+</body>
+</html>
