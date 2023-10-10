@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Joke API</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <h1>Joke API</h1>
+    <button onclick="getJoke()">Get a Joke</button>
+    <div id="jokeContainer"></div>
+
+    <script>
+        function getJoke() {
+            $.ajax({
+                url: 'https://raw.githubusercontent.com/Catspindev/joke-lists/main/jokes.txt',
+                dataType: 'text',
+                success: function(data) {
+                    var jokes = data.split("\n");
+                    var randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+
+                    var jokeObj = JSON.parse(randomJoke);
+                    var jokeInfo = "<p>Type: " + jokeObj.type + "</p>";
+                    jokeInfo += "<p>Setup: " + jokeObj.setup + "</p>";
+                    jokeInfo += "<p>ID: " + jokeObj.id + "</p>";
+
+                    document.getElementById("jokeContainer").innerHTML = jokeInfo;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
