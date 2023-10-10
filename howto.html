@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Joke API Documentation</title>
+</head>
+<body>
+  <h1>Joke API</h1>
+  <h3>Random Joke:</h3>
+  <p id="joke-setup"></p>
+  <p id="joke-punchline"></p>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $.ajax({
+        url: "https://raw.githubusercontent.com/Catspindev/joke-lists/main/jokes.txt",
+        dataType: "text",
+        success: function(data) {
+          var jokes = data.split("\n");
+          var randomIndex = Math.floor(Math.random() * jokes.length);
+          var joke = jokes[randomIndex];
+          var jokeObject = JSON.parse(joke);
+
+          $("#joke-setup").text(jokeObject.setup);
+          $("#joke-punchline").text(jokeObject.punchline);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
