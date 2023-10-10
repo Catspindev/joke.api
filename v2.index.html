@@ -21,15 +21,7 @@
                     var jokes = data.split("\n");
                     var randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
 
-                    var jokeObj = JSON.parse(randomJoke);
-                    var jokeInfo = "";
-                    for (var key in jokeObj) {
-                        if (jokeObj.hasOwnProperty(key)) {
-                            jokeInfo += "<p>" + key + ": " + jokeObj[key] + "</p>";
-                        }
-                    }
-
-                    document.getElementById("jokeContainer").innerHTML = jokeInfo;
+                    document.getElementById("jokeContainer").innerHTML = randomJoke;
                 }
             });
         }
